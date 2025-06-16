@@ -9,13 +9,14 @@ beforeAll(async () => {
   await new Promise((resolve) => setTimeout(resolve, 1000));
 });
 
-afterAll(async () => {
-  await mongoose.connection.close();
-  server.close();
-});
+// afterAll(async () => {
+//   await mongoose.connection.close();
+//   server.close();
+// });
 
 describe("GET /set-data", () => {
   it("should create a new kitten and return it", async () => {
+    console.log("Running test for GET /set-data");
     const res = await request("http://localhost:3000").get("/set-data");
     expect(res.statusCode).toBe(200);
     expect(res.body).toHaveProperty("name");
